@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>D:\carlos\educ\obj1\proyectosSueltos\remiseria\.README.md.html</title>
+<title>D:\carlos\educ\obj1\proyectosSueltos\flotasDeRodados\.README.md.html</title>
 
 
 <style type="text/css">
@@ -639,8 +639,90 @@ function setDocumentScrollTop(ypos)
 
 </head>
 <body class="markdown-body">
-<h1> <a id="remiser&iacute;as" class="anchor" href="#remiser%C3%ADas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remiser&iacute;as</h1> 
-<p>En este ejercicio vamos a construir un modelo que pueda servir para la administraci&oacute;n de varias remiser&iacute;as</p> 
-<h2> <a id="etapa-1--" class="anchor" href="#etapa-1--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Etapa 1 -</h2>
+<h1> <a id="flotas-de-rodados" class="anchor" href="#flotas-de-rodados" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Flotas de rodados</h1> 
+<p>En este ejercicio vamos a construir un modelo que pueda servir para la administraci&oacute;n de las flotas de rodados que utilizan las distintas dependencias de la Municipalidad de Coronel Vallejos.</p> 
+<h2> <a id="etapa-1---rodados-y-dependencias" class="anchor" href="#etapa-1---rodados-y-dependencias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Etapa 1 - Rodados y dependencias</h2> 
+<p>De cada <strong>rodado</strong> nos van a interesar: <em>capacidad</em> (o sea, cu&aacute;ntos pasajeros puede transportar), <em>velocidad m&aacute;xima</em>, <em>color</em> y <em>peso</em>.</p> 
+<p>A continuaci&oacute;n se describen los rodados que maneja la muncipalidad.</p> 
+<ul> 
+ <li> <p>Varios <strong>Chevrolet Corsa</strong>. <br /> La capacidad de estos autos es de 4 pasajeros, su velocidad m&aacute;xima 150 km/h, y pesan 1300 kg. <br /> La municipalidad no estableci&oacute; un color fijo para sus Corsa; por lo tanto, debe informarse el color de cada uno. <br /></p> </li> 
+ <li> <p>Varios <strong>Renault Kwid</strong> que funcionan <em>a gas</em>. Cada uno de ellos puede tener puesto, o no, un tanque adicional.</p> 
+  <ul> 
+   <li>La capacidad de un Kwid es de 4 pasajeros si no tiene puesto el tanque adicional, o 3 pasajeros si s&iacute; lo tiene puesto.</li> 
+   <li>La velocidad m&aacute;xima es 120 km/h con, o 110 km/h sin, tanque adicional.</li> 
+   <li>El peso es 1200 kg, m&aacute;s 150 kg adicionales si tiene tanque adicional.</li> 
+   <li>Todos los autos de este tipo con que cuenta la municipalidad son azules. <br /> </li> 
+  </ul> </li> 
+ <li> <p><strong>Una Trafic</strong> (s&iacute;, una sola), que es reconfigurable, porque se le puede cambiar el interior y el motor.</p> 
+  <ul> 
+   <li>La municipalidad cuenta con dos <em>interiores</em>, uno <strong>c&oacute;modo</strong> (capacidad 5 pasajeros, peso 700 kg) y otro <strong>popular</strong> (capacidad 12 pasajeros, peso 1000 kg). La municipalidad tiene un solo interior de cada tipo.</li> 
+   <li>Tambi&eacute;n ha comprado dos <em>motores</em> para su Trafic, uno <strong>pulenta</strong> (que pesa 800 kg y permite una velocidad m&aacute;xima de 130 km/h) y otro <strong>batat&oacute;n</strong> (que pesa 500 kg y permite una velocidad m&aacute;xima de 80 km/h). La municipalidad tiene un solo motor de cada tipo.</li> 
+   <li>Varias caracter&iacute;sticas de la Trafic dependen de qu&eacute; interior y qu&eacute; motor le hayan puesto: 
+    <ul> 
+     <li>La <em>capacidad</em> de la Trafic es la del interior.</li> 
+     <li>La <em>velocidad m&aacute;xima</em> es la que permite el motor.</li> 
+     <li>El peso es 4000 kg m&aacute;s el peso del interior m&aacute;s el del motor.</li> 
+    </ul> </li> 
+   <li>Finalmente, digamos que la Trafic es de <em>color blanco</em>, independientemente del interior y el motor que tenga puestos.</li> 
+  </ul> </li> 
+ <li> <p>Varios <strong>autos especiales</strong> que son todos distintos entre s&iacute;. De cada uno de ellos se debe especificar capacidad, velocidad m&aacute;xima, peso y color.</p> </li> 
+</ul> 
+<br /> 
+<p>Como dijimos, cada <strong>dependencia</strong> de la municipalidad maneja una <em>flota de rodados</em>. Un rodado puede estar compartido entre varias dependencias (ver test m&aacute;s abajo). De cada dependencia importa tambi&eacute;n <em>cu&aacute;ntos empleados tiene</em>.</p> 
+<p>Debe ser posible enviarle los siguientes mensajes a cada objeto que representa a una dependencia.</p> 
+<ul> 
+ <li> <code>agregarAFlota(rodado)</code> y <code>quitarDeFlota(rodado)</code>.</li> 
+ <li> <code>pesoTotalFlota()</code>, la suma del peso de cada rodado afectado a la flota.</li> 
+ <li> <code>estaBienEquipada()</code>, es verdadero si la flota tiene al menos 3 rodados, y adem&aacute;s, <em>todos</em> los rodados de la flota pueden ir al menos a 100 km/h.</li> 
+ <li> <code>capacidadTotalEnColor(color)</code>, la cantidad total de personas que puede transportar la flota afectada a la dependencia, considerando solamente los rodados del color indicado.</li> 
+ <li> <code>colorDelRodadoMasRapido()</code>, eso.</li> 
+ <li> <code>capacidadFaltante()</code>, que es el resultado de restar, de la cantidad de empleados, la capacidad sumada de los veh&iacute;culos de la flota.</li> 
+ <li> <code>esGrande()</code>, la condici&oacute;n es que la dependencia tenga al menos 40 empleados y 5 rodados.</li> 
+</ul> 
+<h3> <a id="test-con-dos-dependencias" class="anchor" href="#test-con-dos-dependencias" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test con dos dependencias</h3> 
+<p>Armar un test en el que hay que se definen dos dependencias: deportes (45 empleados) y cultura (31 empleados).</p> 
+<p>En este test debe definirse un rodado al que llamaremos <em>cachito</em>; o sea, definir <code>var cachito = ...</code>. Este rodado debe ser un Corsa de color rojo.</p> 
+<p>La flota de deportes incluye a: <code>cachito</code>, un Corsa azul, un Corsa verde, un Kwid con el tanque adicional puesto; y un auto especial con estas caracter&iacute;sticas: capacidad 5 pasajeros, velocidad m&aacute;xima 160 km/h, peso 1200 kg, color beige.</p> 
+<p>Por su parte, cultura cuenta con: <code>cachito</code>; dos Kwid con el tanque adicional puesto; un Kwid m&aacute;s, este sin el tanque adicional; y la Trafic, configurada con el interior popular y el motor batat&oacute;n.</p> 
+<p>Notar que <code>cachito</code> forma parte de la flota de <em>ambas</em> dependencias.</p> 
+<p>Para cada dependencia, hacer asserts sobre: el peso total de la flota, si est&aacute; o no bien equipada, la capacidad total en color azul, el color del rodado m&aacute;s r&aacute;pido, si es grande o no, y la capacidad faltante.</p> 
+<p>Va una ayudita: la capacidad faltante de deportes es de 25 personas (la flota puede llevar: 12 personas en los 3 Corsa, m&aacute;s 3 del Kwid y 5 del auto especial; total 20), mientras que la de cultura es de 5 personas (puede llevar en total 26: 6 de los Kwid con tanque adicional, m&aacute;s 4 de la Kwid sin tanque, m&aacute;s 4 de cachito, m&aacute;s 12 de la Trafic dado que tiene el interior popular). <br /></p> 
+<p><strong>Megaimportante</strong></p> 
+<p>Hacer el diagrama de objetos correspondiente a este test.</p> 
+<h2> <a id="etapa-2-modelo-de-pedidos" class="anchor" href="#etapa-2-modelo-de-pedidos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Etapa 2: modelo de pedidos</h2> 
+<p>Agregar al modelo los <strong>pedidos</strong> de translados que se generan en la municipalidad.<br /> Cada pedido especifica: la <em>distancia</em> a recorrer (expresada en kil&oacute;metros), el <em>tiempo m&aacute;ximo</em> en que se puede hacer el viaje (expresado en horas), la <em>cantidad de pasajeros</em> a transportar, y tambi&eacute;n un conjunto de <em>colores incompatibles</em>, o sea, que los pasajeros rechazan hacer el viaje en autos de esos colores.<br /> La <em>velocidad requerida</em> de un pedido es el resultado de dividir la cantidad de kil&oacute;metros por el tiempo m&aacute;ximo. P.ej. si para un pedido de un viaje de 480 kil&oacute;metros se indica como tiempo m&aacute;ximo 6 horas, entonces la velocidad requerida de este pedido es de 80 kms/hora (480 / 6 = 80).</p> 
+<p>Agregar la capacidad de preguntar <em>si un auto puede satisfacer un pedido</em>, envi&aacute;ndole un mensaje al viaje con el auto como par&aacute;metro.</p> 
+<p>Para que un auto pueda satisfacer un pedido se tienen que dar tres condiciones:</p> 
+<ul> 
+ <li>que la velocidad m&aacute;xima del auto sea al menos 10 km/h mayor a la velocidad requerida del pedido;</li> 
+ <li>que la capacidad del auto d&eacute; para la cantidad de pasajeros del viaje; y</li> 
+ <li>que el auto no sea de un color incompatible para el viaje.</li> 
+</ul> 
+<p>P.ej. consideremos al auto al que llamamos <code>cachito</code> en el test de la etapa 1 (recordemos: capacidad 4 pasajeros, velocidad m&aacute;xima 150 km/h, color rojo).</p> 
+<ul> 
+ <li>este auto puede satisfacer un pedido de 960 kms con tiempo m&aacute;ximo de 8 horas (lo que da una velocidad requerida de 120 km/h), para 4 pasajeros donde los colores incompatibles son azul y negro.</li> 
+ <li>si agregamos el rojo a los colores incompatibles, o cambiamos la cantidad de pasajeros a 6, entonces <code>cachito</code> ya no puede satisfacer el pedido.</li> 
+ <li>lo mismo si cambiamos el tiempo m&aacute;ximo a 6 horas, porque eso nos dar&iacute;a una velocidad requerida de 160 km/h.</li> 
+</ul> 
+<p>Armar un test que compruebe esta especificaci&oacute;n.</p> 
+<br /> 
+<p>Adem&aacute;s, los objetos que representan pedidos deben entender estos mensajes: <code>acelerar</code> disminuye en uno el tiempo m&aacute;ximo (p.ej. lo hace pasar de 8 horas a 7), y <code>relajar</code> que lo aumenta en uno (p.ej. lo hace pasar de 8 horas a 9).</p> 
+<h2> <a id="etapa-3-registro-de-los-pedidos-de-cada-dependencia" class="anchor" href="#etapa-3-registro-de-los-pedidos-de-cada-dependencia" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Etapa 3: registro de los pedidos de cada dependencia</h2> 
+<p>Agregar a cada dependencia un registro de los pedidos que hace. Se pueden agregar y quitar pedidos.</p> 
+<p>Agregar lo que haga falta al modelo para que se pueda conocer, para una dependencia:</p> 
+<ul> 
+ <li>el total de pasajeros en los pedidos que tiene registrados</li> 
+ <li> <em>cu&aacute;les</em> de los pedidos que tiene registrados no puede ser satisfecho por ninguno de los autos afectados a la dependencia.</li> 
+ <li>dado un color, si es cierto que <em>todos</em> los pedidos registrados lo tienen como color incompatible.</li> 
+</ul> 
+<p>Tambi&eacute;n debe ser posible, enviando un mensaje al objeto que representa a una dependencia, <em>relajar</em> todos los pedidos que tenga registrados.</p> 
+<h2> <a id="extra---un-peque&ntilde;o-desaf&iacute;o" class="anchor" href="#extra---un-peque%C3%B1o-desaf%C3%ADo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extra - un peque&ntilde;o desaf&iacute;o</h2> 
+<p>Agregar un m&eacute;todo m&aacute;s a las dependencias, que devuelva el conjunto de colores que son incompatibles para, al menos, un pedido. Los curiosos pueden investigar el m&eacute;todo <code>fold</code>; ver el apunte sobre colecciones que est&aacute; en el sitio. Algo se explica en el apunte n&uacute;mero 12 de la serie de apuntes que est&aacute; en <a href="https://wollok.org" rel="nofollow">wollok.org</a>.</p> 
+<h2> <a id="notas-bibliogr&aacute;ficas" class="anchor" href="#notas-bibliogr%C3%A1ficas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Notas bibliogr&aacute;ficas</h2> 
+<p>Coronel Vallejos no existe, es el pueblo ficticio donde transcurre <em>La traici&oacute;n de Rita Hayworth</em>, una novela de Manuel Puig.</p> 
+<h2> <a id="un-comentario-para-la-implementaci&oacute;n" class="anchor" href="#un-comentario-para-la-implementaci%C3%B3n" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Un comentario para la implementaci&oacute;n</h2> 
+<p>En este ejercicio no damos ning&uacute;n c&oacute;digo inicial, les toca todo a ustedes. Van solamente algunos comentarios.</p> 
+<p>La mayor parte de los objetos que representan rodados van a ser instancias de alguna clase. No todos de la misma clase: las caracter&iacute;sticas de un Corsa son distintas que las de un Twid.</p> 
+<p>La excepci&oacute;n es la Trafic: dado que hay una sola, <strong>no es necesario</strong> crear una clase <code>Trafic</code>, puede ser tranquilamente un objeto bien conocido.</p>
 </body>
 </html>
