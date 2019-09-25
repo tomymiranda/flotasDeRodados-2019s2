@@ -110,7 +110,7 @@ También debe ser posible, enviando un mensaje al objeto que representa a una de
 
 ## Extra - un pequeño desafío
 
-Agregar un método más a las dependencias, que devuelva el conjunto de colores que son incompatibles para, al menos, un pedido. Los curiosos pueden investigar el método `fold`; ver el apunte sobre colecciones que está en el sitio. Algo se explica en el apunte número 12 de la serie de apuntes que está en [wollok.org](https://wollok.org).
+Agregar un método más a las dependencias, que devuelva el conjunto de colores que son incompatibles para, al menos, un pedido. Los curiosos pueden investigar el método `flatten`; ver el apunte sobre colecciones que está en el sitio. 
 
 
 ## Notas bibliográficas
